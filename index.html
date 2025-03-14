@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Profesional</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+        .header {
+            background: #2d2d2d;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #3498db;
+        }
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+        }
+        .projects-container {
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 24px;
+            border-radius: 50%;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .project-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .project-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tech-icon {
+            font-size: 18px;
+            color: #3498db;
+        }
+        .skills-section {
+            background: #1a1a1a;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .skill {
+            display: inline-block;
+            margin: 10px;
+            padding: 8px 15px;
+            background: #3498db;
+            color: #fff;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .contact-section {
+            background: #2d2d2d;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #3498db;
+            border-radius: 4px;
+            background: #1a1a1a;
+            color: #f5f5f5;
+        }
+        .contact-form button {
+            background: #3498db;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .footer {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav">
+            <a href="#acerca">Acerca de</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </header>
+
+    <section class="hero" id="acerca">
+        <h1>Portafolio Profesional</h1>
+        <p>Desarrollador Web con enfoque en creación de soluciones digitales innovadoras.</p>
+    </section>
+
+    <section class="projects-container" id="proyectos">
+        <!-- Proyecto 1 -->
+        <div class="project-card">
+            <div class="project-carousel">
+                <div class="carousel-slides" id="slides1">
+                    <div class="carousel-slide">
+                        <img src="img/proyecto1_1.png" alt="Imagen 1 Proyecto 1" class="carousel-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/proyecto1_2.png" alt="Imagen 2 Proyecto 1" class="carousel-img">
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="prevSlide(1)">&#10094;</button>
+                <button class="carousel-btn next" onclick="nextSlide(1)">&#10095;</button>
+            </div>
+            <h2 class="project-title">Proyecto 1 - NewProyectUS E-commerce</h2>
+            <p class="project-description">Plataforma de comercio electrónico con formulario funcional y solicitudes hacia la base de datos escrita en MySQL mediante PHP.</p>
+            <div class="tech-stack">
+                <span class="tech-icon">HTML5</span>
+                <span class="tech-icon">CSS3</span>
+                <span class="tech-icon">JavaScript</span>
+                <span class="tech-icon">PHP</span>
+                <span class="tech-icon">MySQL</span>
+            </div>
+            <a href="https://github.com/Facuud2/NewProyectUS" target="_blank" class="project-link">Ver en GitHub</a>
+        </div>
+        
+        <!-- Proyecto 2 -->
+        <div class="project-card">
+            <div class="project-carousel">
+                <div class="carousel-slides" id="slides2">
+                    <div class="carousel-slide">
+                        <img src="img/proyecto2_1.png" alt="Imagen 1 Proyecto 2" class="carousel-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/proyecto2_2.png" alt="Imagen 2 Proyecto 2" class="carousel-img">
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="prevSlide(2)">&#10094;</button>
+                <button class="carousel-btn next" onclick="nextSlide(2)">&#10095;</button>
+            </div>
+            <h2 class="project-title">Proyecto 2 - Hardware Compatibility API</h2>
+            <p class="project-description">API robusta para la verificación de compatibilidad de hardware. Desarrollada en Java, Spring Boot y PostgreSQL.</p>
+            <div class="tech-stack">
+                <span class="tech-icon">Java</span>
+                <span class="tech-icon">Spring Boot</span>
+                <span class="tech-icon">Hibernate</span>
+                <span class="tech-icon">PostgreSQL</span>
+                <span class="tech-icon">REST</span>
+                <span class="tech-icon">Bootstrap</span>
+            </div>
+            <a href="#" target="_blank" class="project-link">Ver en GitHub</a>
+        </div>
+        
+        <!-- Proyecto 3 -->
+        <div class="project-card">
+            <div class="project-carousel">
+                <div class="carousel-slides" id="slides3">
+                    <div class="carousel-slide">
+                        <img src="img/proyecto3_1.png" alt="Imagen 1 Proyecto 3" class="carousel-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/proyecto3_1.png" alt="Imagen 2 Proyecto 3" class="carousel-img">
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="prevSlide(3)">&#10094;</button>
+                <button class="carousel-btn next" onclick="nextSlide(3)">&#10095;</button>
+            </div>
+            <h2 class="project-title">Proyecto 3 - TurboStore E-Commerce</h2>
+            <p class="project-description">Proyecto de tienda eCommerce desarrollado con React.js, Node.js y TailwindCSS.</p>
+            <div class="tech-stack">
+                <span class="tech-icon">React</span>
+                <span class="tech-icon">Node.js</span>
+                <span class="tech-icon">Express</span>
+                <span class="tech-icon">REST</span>
+                <span class="tech-icon">TailwindCSS</span>
+            </div>
+            <a href="https://github.com/Facuud2/Node.js---React.js.git" target="_blank" class="project-link">Ver en GitHub</a>
+        </div>
+    </section>
+
+    <section class="skills-section" id="habilidades">
+        <h2>Habilidades Técnicas</h2>
+        <div class="skills-list">
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">React</span>
+            <span class="skill">Node.js</span>
+            <span class="skill">Git</span>
+            <span class="skill">REST APIs</span>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+        <h2>Contáctame</h2>
+        <div class="contact-form">
+            <form action="#" method="post">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="mensaje" placeholder="Mensaje" rows="4" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2023 Portafolio Profesional. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Inicializar el estado de cada carrusel: se asume que hay 3 proyectos
+        let currentSlide = [1, 1, 1];
+
+        function nextSlide(projectId) {
+            const slides = document.getElementById(`slides${projectId}`);
+            const slidesCount = slides.children.length;
+            currentSlide[projectId - 1] = (currentSlide[projectId - 1] % slidesCount) + 1;
+            slides.style.transform = `translateX(-${(currentSlide[projectId - 1] - 1) * 100}%)`;
+        }
+
+        function prevSlide(projectId) {
+            const slides = document.getElementById(`slides${projectId}`);
+            const slidesCount = slides.children.length;
+            // Se utiliza una fórmula para asegurar que el índice se mantenga entre 1 y slidesCount
+            currentSlide[projectId - 1] = ((currentSlide[projectId - 1] - 2 + slidesCount) % slidesCount) + 1;
+            slides.style.transform = `translateX(-${(currentSlide[projectId - 1] - 1) * 100}%)`;
+        }
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
