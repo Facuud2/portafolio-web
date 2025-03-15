@@ -4,158 +4,739 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio Profesional</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-        .header {
-            background: #2d2d2d;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .nav a:hover {
-            color: #3498db;
-        }
-        .hero {
-            padding: 100px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
-        }
-        .projects-container {
-            padding: 50px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .project-card {
-            background: #2d2d2d;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
-        .project-carousel {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-        }
-        .carousel-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 24px;
-            border-radius: 50%;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .project-title {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-        .project-description {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .tech-stack {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .tech-icon {
-            font-size: 18px;
-            color: #3498db;
-        }
-        .skills-section {
-            background: #1a1a1a;
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .skill {
-            display: inline-block;
-            margin: 10px;
-            padding: 8px 15px;
-            background: #3498db;
-            color: #fff;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-        .contact-section {
-            background: #2d2d2d;
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #3498db;
-            border-radius: 4px;
-            background: #1a1a1a;
-            color: #f5f5f5;
-        }
-        .contact-form button {
-            background: #3498db;
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .footer {
-            background: #1a1a1a;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-        }
-        @media (max-width: 768px) {
-            .hero {
-                padding: 50px 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1a1a1a;
+        color: #f5f5f5;
+    }
+    .header {
+        background: rgba(45, 45, 45, 0.98);
+        padding: 20px 0;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+    }
+    .nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    .nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #3498db;
+        transition: width 0.3s ease;
+    }
+    .nav a:hover::after {
+        width: 100%;
+    }
+    .hero {
+        padding: 80px 20px 20px;
+        background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        position: relative;
+        overflow: hidden;
+    }
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(52, 152, 219, 0.1) 0%, transparent 50%);
+    }
+    .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        position: relative;
+        z-index: 1;
+    }
+    .profile-image-container {
+        position: relative;
+    }
+    .profile-image {
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid rgba(52, 152, 219, 0.5);
+        box-shadow: 0 0 30px rgba(52, 152, 219, 0.2);
+        transition: all 0.3s ease;
+    }
+    .profile-image-container::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+        animation: rotate 4s linear infinite;
+    }
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    .profile-info {
+        flex: 1;
+    }
+    .profile-info h1 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        color: #fff;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .profile-info p {
+        font-size: 1.2em;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: #e0e0e0;
+        font-weight: 300;
+    }
+    .certifications {
+        margin-top: 30px;
+        background: rgba(45, 45, 45, 0.5);
+        padding: 25px;
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+    }
+    .certifications h3 {
+        color: #3498db;
+        margin-bottom: 15px;
+        font-size: 1.4em;
+        font-weight: 500;
+    }
+    .certifications ul {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    .certifications li {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: rgba(52, 152, 219, 0.1);
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+    .certifications li:hover {
+        transform: translateX(10px);
+        background: rgba(52, 152, 219, 0.2);
+    }
+    .certifications li:before {
+        content: "🏆";
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
+    @media (max-width: 768px) {
+        .hero {
+            padding: 100px 20px 60px;
+        }
+        .hero-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 40px;
+        }
+        .profile-image {
+            width: 250px;
+            height: 250px;
+        }
+        .certifications ul {
+            grid-template-columns: 1fr;
+        }
+        .certifications li:hover {
+            transform: translateY(-5px);
+        }
+    }
+    .projects-container {
+        padding: 50px 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    .project-card {
+        background: #2d2d2d;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+        position: relative;
+        overflow: hidden;
+    }
+    .project-carousel {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    .carousel-slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    .carousel-slide {
+        min-width: 100%;
+        height: 100%;
+    }
+    .carousel-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        padding: 15px;
+        cursor: pointer;
+        font-size: 24px;
+        border-radius: 50%;
+    }
+    .prev {
+        left: 10px;
+    }
+    .next {
+        right: 10px;
+    }
+    .project-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    .project-description {
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    .tech-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(52, 152, 219, 0.1);
+        border-radius: 20px;
+        font-size: 0.9em;
+        color: #e0e0e0;
+        border: 1px solid rgba(52, 152, 219, 0.2);
+        transition: all 0.3s ease;
+    }
+    .tech-badge:hover {
+        transform: translateY(-2px);
+        background: rgba(52, 152, 219, 0.2);
+        border-color: rgba(52, 152, 219, 0.4);
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+    }
+    .tech-badge i {
+        color: #3498db;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+    }
+    .tech-badge:hover i {
+        transform: rotate(360deg);
+        color: #5dade2;
+    }
+    .project-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: #2d2d2d;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 500;
+        border: 1px solid rgba(52, 152, 219, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .github-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+    }
+    .github-link:hover {
+        transform: translateY(-2px);
+        background: #3a3a3a;
+        border-color: #3498db;
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+    }
+    .github-link:hover::before {
+        transform: translateX(100%);
+    }
+    .github-link i {
+        font-size: 1.2em;
+        transition: transform 0.3s ease;
+    }
+    .github-link:hover i {
+        transform: rotate(360deg);
+    }
+    .demo-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: #3498db;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 500;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .demo-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+    }
+    .demo-link:hover {
+        transform: translateY(-2px);
+        background: #2980b9;
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+    .demo-link:hover::before {
+        transform: translateX(100%);
+    }
+    .demo-link i {
+        font-size: 1.2em;
+        transition: transform 0.3s ease;
+    }
+    .demo-link:hover i {
+        transform: rotate(360deg);
+    }
+    .skills-section {
+        background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        padding: 80px 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    .skills-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+    }
+    .skills-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+    }
+    .skills-column {
+        background: rgba(45, 45, 45, 0.7);
+        padding: 35px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(52, 152, 219, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    .skills-column:hover {
+        transform: translateY(-5px);
+    }
+    .skills-column h3 {
+        color: #3498db;
+        font-size: 2em;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        padding-bottom: 15px;
+    }
+    .skills-column h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #3498db;
+        border-radius: 2px;
+    }
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+    }
+    .skill-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px;
+        background: rgba(52, 152, 219, 0.1);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(52, 152, 219, 0.05);
+    }
+    .skill-item:hover {
+        transform: translateY(-3px) scale(1.02);
+        background: rgba(52, 152, 219, 0.15);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .skill-icon {
+        font-size: 1.8em;
+        color: #3498db;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(52, 152, 219, 0.1);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .skill-item:hover .skill-icon {
+        color: #fff;
+        background: #3498db;
+        transform: rotate(360deg);
+    }
+    .skill-name {
+        font-size: 1.1em;
+        color: #f5f5f5;
+        font-weight: 500;
+    }
+    @media (max-width: 768px) {
+        .skills-section {
+            padding: 60px 20px;
+        }
+        .skills-container {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        .skills-column {
+            padding: 25px;
+        }
+        .skills-grid {
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+        .skill-item {
+            padding: 12px;
+        }
+        .skill-icon {
+            font-size: 1.5em;
+            width: 35px;
+            height: 35px;
+        }
+        .skill-name {
+            font-size: 1em;
+        }
+    }
+    .contact-section {
+        background: #2d2d2d;
+        padding: 50px 20px;
+        text-align: center;
+    }
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 20px;
+    }
+    .social-icon {
+        color: #f5f5f5;
+        font-size: 2.5rem;
+        transition: transform 0.3s, color 0.3s;
+        text-decoration: none;
+    }
+    .social-icon:hover {
+        transform: translateY(-5px);
+        color: #3498db;
+    }
+    .footer {
+        background: #1a1a1a;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+    }
+    @media (max-width: 768px) {
+        .hero {
+            padding: 50px 20px;
+        }
+    }
+    .wip-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: linear-gradient(45deg, #805ad5, #6b46c1);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 500;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: default;
+    }
+    .wip-badge::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+    }
+    .wip-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(107, 70, 193, 0.3);
+    }
+    .wip-badge:hover::before {
+        transform: translateX(100%);
+    }
+    .wip-badge i {
+        font-size: 1.2em;
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    /* Estilos base responsivos */
+    :root {
+        --header-height: 70px;
+        --section-padding: 80px 20px;
+        --container-max-width: 1400px;
+        --grid-gap: 30px;
+    }
+
+    /* Container responsivo */
+    .container {
+        width: 100%;
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Ajustes responsivos para proyectos */
+    .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--grid-gap);
+        padding: var(--section-padding);
+    }
+
+    .project-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: rgba(45, 45, 45, 0.5);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-carousel {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* Aspect ratio 16:9 */
+    }
+
+    .carousel-slides {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Media Queries mejorados */
+    @media (max-width: 1200px) {
+        :root {
+            --container-max-width: 1140px;
+            --grid-gap: 25px;
+        }
+
+        .hero-content {
+            gap: 40px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        :root {
+            --container-max-width: 960px;
+            --section-padding: 60px 20px;
+        }
+
+        .projects-container {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .tech-stack {
+            flex-wrap: wrap;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --container-max-width: 720px;
+            --grid-gap: 20px;
+        }
+
+        .hero-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+        }
+
+        .skills-container {
+            grid-template-columns: 1fr;
+        }
+
+        .project-card {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        :root {
+            --section-padding: 40px 15px;
+        }
+
+        .nav {
+            padding: 0 15px;
+        }
+
+        .hero {
+            padding-top: 100px;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+        }
+
+        .tech-stack {
+            justify-content: center;
+        }
+
+        .project-links {
+            flex-direction: column;
+            gap: 15px;
+            align-items: stretch;
+        }
+
+        .github-link, .demo-link, .wip-badge {
+            text-align: center;
+            justify-content: center;
+        }
+    }
+
+    /* Ajustes para dispositivos muy pequeños */
+    @media (max-width: 360px) {
+        .profile-image {
+            width: 180px;
+            height: 180px;
+        }
+
+        .tech-badge {
+            font-size: 0.85em;
+            padding: 6px 12px;
+        }
+    }
+
+    /* Ajustes para modo landscape en móviles */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .hero {
+            min-height: auto;
+            padding: 100px 20px 40px;
+        }
+
+        .hero-content {
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+        }
+    }
+</style>
 <body>
     <header class="header">
         <div class="nav">
@@ -167,8 +748,25 @@
     </header>
 
     <section class="hero" id="acerca">
-        <h1>Portafolio Profesional</h1>
-        <p>Desarrollador Web con enfoque en creación de soluciones digitales innovadoras.</p>
+        <div class="hero-content">
+            <div class="profile-image-container">
+                <img src="img/profile.jpg" alt="Tu Foto de Perfil" class="profile-image">
+            </div>
+            <div class="profile-info">
+                <h1>¡Hola! Soy Facundo Carrizo</h1>
+                <p>Desarrollador Web FullStack apasionado por crear soluciones digitales innovadoras y eficientes. Actualmente me especializo en desarrollo web, APIs REST y diseño de interfaces de usuario con React.js, Bootstrap, Java y Spring Boot, enfocandome en la experiencia del usuario.</p>
+                <p>Mi viaje en el mundo del desarrollo comenzó a los 18 años por la tecnología y se ha convertido en una pasión por crear productos digitales que impacten positivamente en la vida de las personas, reflejando en cada uno de mis proyectos la profesionalidad y el compromiso con la calidad del producto final.
+                </p>
+                <div class="certifications">
+                    <h3>Certificaciones y Logros</h3>
+                    <ul>
+                        <li>Certificación en Desarrollador Web FrontEnd (2022)</li>
+                        <li>Especialización en Bases de Datos SQL (2023)</li>
+                        <li>Certificacion en Desarrollador BackEnd Java (2024)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="projects-container" id="proyectos">
@@ -189,13 +787,17 @@
             <h2 class="project-title">Proyecto 1 - NewProyectUS E-commerce</h2>
             <p class="project-description">Plataforma de comercio electrónico con formulario funcional y solicitudes hacia la base de datos escrita en MySQL mediante PHP.</p>
             <div class="tech-stack">
-                <span class="tech-icon">HTML5</span>
-                <span class="tech-icon">CSS3</span>
-                <span class="tech-icon">JavaScript</span>
-                <span class="tech-icon">PHP</span>
-                <span class="tech-icon">MySQL</span>
+                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
+                <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                <span class="tech-badge"><i class="fa-solid fa-user-tie"></i>phpMyAdmin</span>
             </div>
-            <a href="https://github.com/Facuud2/NewProyectUS" target="_blank" class="project-link">Ver en GitHub</a>
+            <div class="project-links">
+                <!-- <a href="https://newproyectus.000webhostapp.com/" target="_blank" class="demo-link"><i class="fas fa-external-link-alt"></i> Demo en vivo</a> -->
+                <a href="https://github.com/Facuud2/NewProyectUS" target="_blank" class="github-link"><i class="fab fa-github"></i> Ver en GitHub</a>
+            </div>
         </div>
         
         <!-- Proyecto 2 -->
@@ -215,14 +817,18 @@
             <h2 class="project-title">Proyecto 2 - Hardware Compatibility API</h2>
             <p class="project-description">API robusta para la verificación de compatibilidad de hardware. Desarrollada en Java, Spring Boot y PostgreSQL.</p>
             <div class="tech-stack">
-                <span class="tech-icon">Java</span>
-                <span class="tech-icon">Spring Boot</span>
-                <span class="tech-icon">Hibernate</span>
-                <span class="tech-icon">PostgreSQL</span>
-                <span class="tech-icon">REST</span>
-                <span class="tech-icon">Bootstrap</span>
+                <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
+                <span class="tech-badge"><i class="fas fa-leaf"></i> Spring Boot</span>
+                <span class="tech-badge"><i class="fas fa-server"></i> REST API</span>
+                <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                <span class="tech-badge"><i class="fas fa-layer-group"></i> Hibernate</span>
+                <span class="tech-badge"><i class="fas fa-feather-alt"></i> Lombok</span>
+                <span class="tech-badge"><i class="fas fa-code-branch"></i> Flyway</span>
             </div>
-            <a href="#" target="_blank" class="project-link">Ver en GitHub</a>
+            <div class="project-links">
+                <a href="https://github.com/Facuud2/Hardware-Compatibility-API-" target="_blank" class="github-link"><i class="fab fa-github"></i> Ver en GitHub</a>
+                <a href="https://hardware-compatibility-api.vercel.app/" target="_blank" class="demo-link"><i class="fas fa-external-link-alt"></i> Demo en vivo</a>
+            </div>
         </div>
         
         <!-- Proyecto 3 -->
@@ -242,43 +848,153 @@
             <h2 class="project-title">Proyecto 3 - TurboStore E-Commerce</h2>
             <p class="project-description">Proyecto de tienda eCommerce desarrollado con React.js, Node.js y TailwindCSS.</p>
             <div class="tech-stack">
-                <span class="tech-icon">React</span>
-                <span class="tech-icon">Node.js</span>
-                <span class="tech-icon">Express</span>
-                <span class="tech-icon">REST</span>
-                <span class="tech-icon">TailwindCSS</span>
+                <span class="tech-badge"><i class="fab fa-react"></i> React</span>
+                <span class="tech-badge"><i class="fab fa-node-js"></i> Node.js</span>
+                <span class="tech-badge"><i class="fas fa-lock"></i> Express</span>
+                <span class="tech-badge"><i class="fas fa-lock"></i> REST</span>
+                <span class="tech-badge"><i class="fa-solid fa-wind"></i> TailwindCSS</span>
             </div>
-            <a href="https://github.com/Facuud2/Node.js---React.js.git" target="_blank" class="project-link">Ver en GitHub</a>
+            <div class="project-links">
+                <!-- <a href="https://turbostore-react.netlify.app/" target="_blank" class="demo-link"><i class="fas fa-external-link-alt"></i> Demo en vivo</a> -->
+                <a href="https://github.com/Facuud2/Node.js---React.js.git" target="_blank" class="github-link"><i class="fab fa-github"></i> Ver en GitHub</a>
+            </div>
         </div>
+        
+        <!-- Proyecto 4 -->
+        <div class="project-card">
+            <div class="project-carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <img src="img/portfolio-1.jpg" alt="Portfolio Web Screenshot" class="carousel-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/portfolio-2.jpg" alt="Portfolio Web Features" class="carousel-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/portfolio-3.jpg" alt="Portfolio Web Mobile" class="carousel-img">
+                    </div>
+                </div>
+                <button class="carousel-btn prev">❮</button>
+                <button class="carousel-btn next">❯</button>
+            </div>
+            <h2 class="project-title">Proyecto 4 - Comitas App</h2>
+            <p class="project-description">API REST para gestión de reservas y pedidos en restaurantes. Desarrollada con Java y Spring Boot, implementando una arquitectura robusta con Hibernate y MySQL.</p>
+            <div class="tech-stack">
+                <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
+                <span class="tech-badge"><i class="fas fa-server"></i> REST API</span>
+                <span class="tech-badge"><i class="fas fa-database"></i> Hibernate</span>
+                <span class="tech-badge"><i class="fas fa-feather"></i> Lombok</span>
+                <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                <span class="tech-badge"><i class="fas fa-code-branch"></i> Flyway</span>
+                <span class="tech-badge"><i class="fas fa-check-circle"></i> Insomnia</span>
+            </div>
+            <div class="project-links">
+                <span class="wip-badge"><i class="fas fa-code-branch"></i> En Desarrollo</span>
+            </div>
+        </div>
+        
     </section>
 
     <section class="skills-section" id="habilidades">
-        <h2>Habilidades Técnicas</h2>
-        <div class="skills-list">
-            <span class="skill">HTML5</span>
-            <span class="skill">CSS3</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">React</span>
-            <span class="skill">Node.js</span>
-            <span class="skill">Git</span>
-            <span class="skill">REST APIs</span>
+        <div class="skills-container">
+            <div class="skills-column">
+                <h3>Habilidades Técnicas</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-html5 skill-icon"></i>
+                        <span class="skill-name">HTML5</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt skill-icon"></i>
+                        <span class="skill-name">CSS3</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js skill-icon"></i>
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-react skill-icon"></i>
+                        <span class="skill-name">React.js</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-java skill-icon"></i>
+                        <span class="skill-name">Java</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-leaf skill-icon"></i>
+                        <span class="skill-name">Spring Boot</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        <span class="skill-name">MySQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-git-alt skill-icon"></i>
+                        <span class="skill-name">Git</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-column">
+                <h3>Habilidades Blandas</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-users skill-icon"></i>
+                        <span class="skill-name">Trabajo en Equipo</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-comments skill-icon"></i>
+                        <span class="skill-name">Comunicación</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-tasks skill-icon"></i>
+                        <span class="skill-name">Gestión de Proyectos</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-lightbulb skill-icon"></i>
+                        <span class="skill-name">Resolución de Problemas</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-clock skill-icon"></i>
+                        <span class="skill-name">Gestión del Tiempo</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-brain skill-icon"></i>
+                        <span class="skill-name">Pensamiento Analítico</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-book-reader skill-icon"></i>
+                        <span class="skill-name">Autoaprendizaje</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-handshake skill-icon"></i>
+                        <span class="skill-name">Adaptabilidad</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="contact-section" id="contacto">
-        <h2>Contáctame</h2>
-        <div class="contact-form">
-            <form action="#" method="post">
-                <input type="text" name="nombre" placeholder="Nombre" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="mensaje" placeholder="Mensaje" rows="4" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
+        <h2>Contacto</h2>
+        <p>¡Conectemos! Encuéntrame en las siguientes redes sociales:</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/facundo-dev" target="_blank" class="social-icon" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://instagram.com/facuud2-dev" target="_blank" class="social-icon" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/5491165249676" target="_blank" class="social-icon" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://github.com/Facuud2" target="_blank" class="social-icon" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
         </div>
     </section>
 
     <footer class="footer">
-        <p>© 2023 Portafolio Profesional. Todos los derechos reservados.</p>
+        <p> 2025 Portafolio Profesional - Facundo Carrizo. Todos los derechos reservados.</p>
     </footer>
 
     <script>
