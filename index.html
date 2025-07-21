@@ -153,6 +153,18 @@
         margin-right: 10px;
         font-size: 1.2em;
     }
+
+    .projects-container {
+        padding: 50px 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
     @media (max-width: 768px) {
         .hero {
             padding: 100px 20px 60px;
@@ -176,8 +188,24 @@
     .projects-container {
         padding: 50px 20px;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    @media (max-width: 1024px) {
+        .projects-container {
+            grid-template-columns: 1fr;
+            max-width: 800px;
+        }
+        
+        .project-card {
+            width: 100%;
+            margin: 0 auto;
+        }
     }
     .project-card {
         background: #2d2d2d;
@@ -863,33 +891,35 @@
         <!-- Proyecto 4 -->
         <div class="project-card">
             <div class="project-carousel">
-                <div class="carousel-slides">
+                <div class="carousel-slides" id="slides4">
                     <div class="carousel-slide">
-                        <img src="img/wip.jpg" alt="Portfolio Web Screenshot" class="carousel-img">
+                        <img src="img/proyecto4_1.jpg" alt="Captura de pantalla 1 - Comitas App" class="carousel-img">
                     </div>
                     <div class="carousel-slide">
-                        <img src="img/IMG_20250315_171101.jpg" alt="Portfolio Web Features" class="carousel-img">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="img/portfolio-3.jpg" alt="Portfolio Web Mobile" class="carousel-img">
+                        <img src="img/proyecto4_2.jpg" alt="Captura de pantalla 2 - Comitas App" class="carousel-img">
                     </div>
                 </div>
-                <button class="carousel-btn prev">❮</button>
-                <button class="carousel-btn next">❯</button>
+                <button class="carousel-btn prev" onclick="prevSlide(4)">&#10094;</button>
+                <button class="carousel-btn next" onclick="nextSlide(4)">&#10095;</button>
             </div>
             <h2 class="project-title">Proyecto 4 - Comitas App</h2>
-            <p class="project-description">API REST para gestión de reservas y pedidos en restaurantes. Desarrollada con Java y Spring Boot, implementando una arquitectura robusta con Hibernate y MySQL.</p>
+            <p class="project-description">Aplicación web completa para gestión de reservas y pedidos en restaurantes. Incluye panel de administración, gestión de menú, seguimiento de pedidos en tiempo real y sistema de notificaciones.</p>
             <div class="tech-stack">
-                <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
+                <span class="tech-badge"><i class="fab fa-java"></i> Java 17</span>
+                <span class="tech-badge"><i class="fas fa-leaf"></i> Spring Boot 3.x</span>
                 <span class="tech-badge"><i class="fas fa-server"></i> REST API</span>
                 <span class="tech-badge"><i class="fas fa-database"></i> Hibernate</span>
-                <span class="tech-badge"><i class="fas fa-feather"></i> Lombok</span>
-                <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
-                <span class="tech-badge"><i class="fas fa-code-branch"></i> Flyway</span>
-                <span class="tech-badge"><i class="fas fa-check-circle"></i> Insomnia</span>
+                <span class="tech-badge"><i class="fas fa-database"></i> MySQL 8.0</span>
+                <span class="tech-badge"><i class="fas fa-lock"></i> JWT</span>
+                <span class="tech-badge"><i class="fas fa-code-branch"></i> Git</span>
             </div>
             <div class="project-links">
-                <span class="wip-badge"><i class="fas fa-code-branch"></i> En Desarrollo</span>
+                <a href="https://github.com/Facuud2/Comitas-App" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i> Ver en GitHub
+                </a>
+                <a href="https://comitas-app-demo.vercel.app" target="_blank" class="demo-link">
+                    <i class="fas fa-external-link-alt"></i> Demo en vivo
+                </a>
             </div>
         </div>
         
@@ -998,8 +1028,8 @@
     </footer>
 
     <script>
-        // Inicializar el estado de cada carrusel: se asume que hay 3 proyectos
-        let currentSlide = [1, 1, 1];
+        // Inicializar el estado de cada carrusel: se asume que hay 5 proyectos
+        let currentSlide = [1, 1, 1, 1, 1];
 
         function nextSlide(projectId) {
             const slides = document.getElementById(`slides${projectId}`);
