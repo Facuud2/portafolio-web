@@ -122,6 +122,26 @@
         border-radius: 15px;
         backdrop-filter: blur(5px);
     }
+    .download-cv {
+        margin-top: 20px;
+        display: inline-block;
+        padding: 12px 25px;
+        background: linear-gradient(45deg, #3498db, #2980b9);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        border: none;
+        cursor: pointer;
+    }
+    .download-cv:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+    .download-cv i {
+        margin-right: 8px;
+    }
     .certifications h3 {
         color: #3498db;
         margin-bottom: 15px;
@@ -785,14 +805,18 @@
                 <p>Desarrollador Web FullStack apasionado por crear soluciones digitales innovadoras y eficientes. Actualmente me especializo en desarrollo web, APIs REST y diseño de interfaces de usuario con React.js, Bootstrap, Java y Spring Boot, enfocandome en la experiencia del usuario.</p>
                 <p>Mi viaje en el mundo del desarrollo comenzó a los 18 años por la tecnología y se ha convertido en una pasión por crear productos digitales que impacten positivamente en la vida de las personas, reflejando en cada uno de mis proyectos la profesionalidad y el compromiso con la calidad del producto final.
                 </p>
-                <div class="certifications">
-                    <h3>Certificaciones y Logros</h3>
-                    <ul>
+                <button class="download-cv">
+            <i class="fas fa-download"></i>
+            Descargar CV
+        </button>
+                <section class="certifications" id="certificaciones">
+        <h3>Certificaciones y Logros</h3>
+        <ul>
                         <li>Certificación en Desarrollador Web FrontEnd (2022)</li>
                         <li>Especialización en Bases de Datos SQL (2023)</li>
                         <li>Certificacion en Desarrollador BackEnd Java (2024)</li>
                     </ul>
-                </div>
+                </section>
             </div>
         </div>
     </section>
@@ -1025,11 +1049,22 @@
 
     <footer class="footer">
         <p> 2025 Portafolio Profesional - Facundo Carrizo. Todos los derechos reservados.</p>
+        <button class="download-cv">Descargar CV</button>
     </footer>
 
     <script>
-        // Inicializar el estado de cada carrusel: se asume que hay 5 proyectos
-        let currentSlide = [1, 1, 1, 1, 1];
+        // Función para descargar el CV
+        document.querySelector('.download-cv').addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = './src/CV_FacundoCarrizoLucero.pdf';
+            link.download = 'CV_FacundoCarrizoLucero.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // Inicializar el estado de cada carrusel: se asume que hay 3 proyectos
+        let currentSlide = [1, 1, 1];
 
         function nextSlide(projectId) {
             const slides = document.getElementById(`slides${projectId}`);
